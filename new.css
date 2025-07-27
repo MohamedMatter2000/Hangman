@@ -1,0 +1,343 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #5e63ba;
+}
+.container {
+  display: flex;
+  width: 850px;
+  gap: 70px;
+  padding: 40px 40px;
+  background: #fff;
+  border-radius: 10px;
+  justify-content: space-between;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.container .hangman-box {
+  flex: 1;
+}
+.hangman-draw {
+  max-width: 270px;
+  padding: 20px;
+  height: 324px;
+  margin-bottom: 20px;
+}
+.hangman-draw .the-draw {
+  width: 280px;
+  height: 280px;
+  position: relative;
+  left: -60px;
+}
+.hangman-draw .the-man {
+  position: absolute;
+  right: -5px;
+  top: 10px;
+}
+.hangman-draw .the-land {
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+  position: absolute;
+  background: #222;
+  bottom: 0;
+  left: 60px;
+}
+.hangman-draw .the-stand {
+  position: absolute;
+  width: 5px;
+  background-color: #222;
+  height: 100%;
+  left: 90px;
+  border-radius: 10px;
+}
+.hangman-draw .the-hang {
+  height: 5px;
+  position: absolute;
+  background-color: #222;
+  width: 75%;
+  left: 90px;
+  top: 0;
+  border-radius: 10px;
+}
+.hangman-draw .the-hang:before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  left: 21px;
+  top: -6px;
+  height: 60px;
+  background-color: #222;
+  transform: rotate(45deg);
+  border-radius: 10px;
+}
+.hangman-draw .the-hang:after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 60px;
+  background-color: #222;
+  right: 0;
+  border-radius: 10px;
+}
+.hangman-draw .the-man .head {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 5px solid #222;
+  position: absolute;
+  right: -37px;
+  top: 48px;
+  display: none;
+}
+.hangman-draw .the-man .body {
+  position: absolute;
+  background-color: #222;
+  width: 5px;
+  height: 90px;
+  right: -16px;
+  top: 96px;
+  border-radius: 10px;
+  display: none;
+}
+.hangman-draw .the-man .hands:before {
+  transform: rotate(-30deg);
+  right: -17px;
+}
+.hangman-draw .the-man .hands:after {
+  right: -60px;
+  transform: rotate(30deg);
+}
+.hangman-draw .the-man .hands:before,
+.hangman-draw .the-man .hands:after {
+  content: "";
+  width: 50px;
+  position: absolute;
+  height: 5px;
+  background-color: #222;
+  top: 120px;
+  border-radius: 10px;
+  display: none;
+}
+.hangman-draw .the-man .legs:before {
+  right: -60px;
+  transform: rotate(30deg);
+}
+.hangman-draw .the-man .legs:after {
+  transform: rotate(-30deg);
+  right: -17px;
+}
+.hangman-draw .the-man .legs:before,
+.hangman-draw .the-man .legs:after {
+  content: "";
+  width: 50px;
+  position: absolute;
+  height: 5px;
+  background-color: #222;
+  top: 194px;
+  border-radius: 10px;
+  display: none;
+}
+
+.hangman-draw.wrong-1 .head {
+  display: block;
+}
+.hangman-draw.wrong-2 .body {
+  display: block;
+}
+.hangman-draw.wrong-3 .hands::before {
+  display: block;
+}
+.hangman-draw.wrong-4 .hands:after {
+  display: block;
+}
+.hangman-draw.wrong-5 .legs::after {
+  display: block;
+}
+.hangman-draw.wrong-6 .legs::before {
+  display: block;
+}
+.container .hangman-box h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.container .game-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.container .game-box .dispaly-word {
+  margin: 10px auto;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container .game-box .dispaly-word span {
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  line-height: 30px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.3s;
+  border-bottom: 3px solid #222;
+}
+.dispaly-word span.with-space {
+  background: none;
+  border-bottom: none;
+  position: relative;
+}
+.dispaly-word span.with-space:before {
+  content: "";
+  width: 20px;
+  height: 4px;
+  background-color: #222;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.container .game-box .dispaly-word span.no-border {
+  border: none;
+}
+.game-box .hint-text {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.game-box .hint-text span {
+  margin-left: 5px;
+}
+.game-box .incorrect {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.game-box .incorrect span {
+  color: #ff0017;
+  font-size: 20px;
+}
+.game-box .keyboard {
+  text-align: center;
+}
+.game-box .keyboard .keyboard-box {
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  display: inline-block;
+  background-color: #5e63ba;
+  color: #fff;
+  font-size: 20px;
+  margin-right: 5px;
+  line-height: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 5px;
+  text-align: center;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.game-box .keyboard .keyboard-box:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.game-box .keyboard .keyboard-box:hover {
+  opacity: 0.8;
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 0 10px;
+  transition: opacity 0.4s ease;
+}
+.popup.show {
+  opacity: 1;
+  pointer-events: all;
+}
+.popup .content {
+  padding: 30px;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.popup .content img {
+  max-width: 130px;
+  margin-bottom: 20px;
+}
+.popup .content h4 {
+  font-size: 1.53rem;
+}
+.popup .content p {
+  font-size: 1.15rem;
+  margin: 15px 0 30px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.popup .content p span {
+  color: #5e63ba;
+  font-weight: 600;
+}
+.popup .content button {
+  padding: 12px 25px;
+  border: none;
+  outline: none;
+  background: #5e63ba;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.popup .content button:hover {
+  opacity: 0.8;
+}
+@media (max-width: 850px) {
+  .container {
+    flex-direction: column;
+    padding: 30px 15px;
+    align-items: center;
+    gap: 20px;
+    margin: 10px;
+  }
+  .hangman-box .hangman-draw {
+    max-width: 300px;
+    padding: 10px;
+    height: 260px;
+    margin-bottom: 20px;
+  }
+  .hangman-box h2 {
+    display: none;
+  }
+}

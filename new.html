@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="new.css" />
+    <title>Hangman</title>
+  </head>
+  <body>
+    <div class="popup">
+      <div class="content">
+        <img src="img/lost.gif" alt="gif" />
+        <h2></h2>
+        <p></p>
+        <button id="play-again">Play Again</button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="hangman-box">
+        <div class="hangman-draw">
+          <div class="the-draw">
+            <div class="the-land"></div>
+            <div class="the-stand"></div>
+            <div class="the-hang"></div>
+            <div class="the-man">
+              <div class="head"></div>
+              <div class="body"></div>
+              <div class="hands"></div>
+              <div class="legs"></div>
+            </div>
+          </div>
+        </div>
+        <h2>Hangman Game</h2>
+      </div>
+      <div class="game-box">
+        <div class="dispaly-word"></div>
+        <div class="hint-text">Hint: <span></span></div>
+        <div class="incorrect">Incorrect guesses: <span>0 / 6</span></div>
+        <div class="keyboard"></div>
+      </div>
+    </div>
+    <audio id="success" src="./Auido/mixkit-winning-chimes-2015.wav"></audio>
+    <audio id="fail" src="./Auido/fail-144746.mp3"></audio>
+    <audio id="finish" src="./Auido/wah-wah-sad-trombone-6347.mp3"></audio>
+    <audio id="win" src="./Auido/mixkit-males-yes-victory-2012.wav"></audio>
+    <script src="new.js"></script>
+  </body>
+</html>
